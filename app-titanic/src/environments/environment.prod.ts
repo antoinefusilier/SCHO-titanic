@@ -1,13 +1,13 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyDU5EUOtKTGOWbyBWnv3dbwwU2sM1bS__4",
-    authDomain: "titanic-7d1c9.firebaseapp.com",
-    projectId: "titanic-7d1c9",
-    storageBucket: "titanic-7d1c9.appspot.com",
-    messagingSenderId: "284182339070",
-    appId: "1:284182339070:web:43252e31355089b697f4af",
-    measurementId: "G-XXN9XZXJ6E"
+    apiKey: "AIzaSyBoa0qeFBViWBEDcUE4F9mhKIg8b1kGni4",
+    authDomain: "titanic-school.firebaseapp.com",
+    projectId: "titanic-school",
+    storageBucket: "titanic-school.appspot.com",
+    messagingSenderId: "283711596661",
+    appId: "1:283711596661:web:12238d25f8b1110f9bb03c",
+    measurementId: "G-R395F43TSZ"
   },
   dataUrl: "https://raw.githubusercontent.com/hkacmaz/Titanic-Passenger-Survivors/master/train.csv"
 

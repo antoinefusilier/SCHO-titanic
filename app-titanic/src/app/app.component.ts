@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FirebaseService } from './services/firebase.service';
+import { FirebaseService, datas_returned } from './services/firebase.service';
 
 import { DataService } from './services/data.service';
 // INTERFACES #########################
@@ -15,13 +15,11 @@ import { __values } from 'tslib';
 export class AppComponent {
   title = 'app-titanic';
   clicked = false;
-  DB_update: db_update | Promise<void> = new Promise((resolve,reject)=>{
-    if(this.clicked === true){
-      resolve(__values(this.DB_update));
-    } else {
-      reject();
-    }
-  });
+  DB_update: db_update = {
+    pushed: [{}],
+    not_pushed: [{}],
+    error:''
+  };
 
   constructor(private fS: FirebaseService, private dS: DataService){
 
@@ -30,8 +28,15 @@ export class AppComponent {
   }
 
   callPushData(){
-    setTimeout(()=>{this.clicked = true},500)
-    this.DB_update = this.fS.pushDataToFB();
+    this.fS.pushDataToFB();
+
+  }
+  callDbUpdate(){
+    console.log(not_pushed_test);
+    console.log(pushed_test);
+
+
+
   }
 
 }

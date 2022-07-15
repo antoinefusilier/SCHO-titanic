@@ -45,7 +45,11 @@ export const docsConfirm = new Promise<any>((resolve, reject) => {
 })
 export const survived: Array<any> = [];
 export const not_survived: Array<any> = [];
-
+export const datas_returned: db_update = {
+  pushed: [{}],
+  not_pushed: [{}],
+  error: ''
+};
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +66,7 @@ export class FirebaseService {
     docsId.length = 0;
 
     this.data = dS.getData();
-    // console.log(this.data.data[1])
+    console.log(this.data.data[1]);
     this.dataLength = this.data.data.length;
     // console.log(this.dataLength);
 
@@ -188,6 +192,7 @@ export class FirebaseService {
     const getted = await getDoc(doc);
     return getted.data();
   }
+
   async getPassengersInDB(){
     let all_p_arr: any = [];
     const all_p = await getDocs(query(collection(db, "train_passengers")));
@@ -217,40 +222,42 @@ export class FirebaseService {
     });
   }
 
-  async pushDataToFB(){
+  pushDataToFB(): any{
     // this.dataLength
-
     // Instanciation of retourned Data
-    let datas_returned: db_update;
+
     // Getting all passenger in Database Firestore
+    console.log('Lancement de la methode pushDataToFB');
+
     let DB_passenger = this.getPassengersInDB();
-    DB_passenger.then((element)=>{
+    console.log(DB_passenger);
+
+    DB_passenger
+    .then((element)=>{
       if (element){
-        for (let y = 0; y < 10; y++) {
+        for (let y = 0; y < this.dataLength; y++) {
 
           const occurence = element.find((elt: any) => elt.id == this.data.data[y].PassengerId);
-          console.log(occurence);
+          // console.log(occurence);
 
           if (!occurence) {
             datas_returned.pushed.push(this.data.data[y]);
+            // console.log('Pas d\'occurence trouvée Pushing');
             // this.pushDataPassenger(y);
           } else {
             datas_returned.not_pushed.push(this.data.data[y]);
-
+            // console.log('Occurence trouvé Not pushing');
           }
         }
 
-      }
+      } else {
+        console.log('No element');
 
+      }
     })
     .catch(() => {
       datas_returned.error = 'Error DB01: Probleme de recuperation des donnees dans la base Firestore';
     })
-    .finally(()=> {
-      return datas_returned;
-    });
-
-
   }
   static() {
     for (let i = 0; i < docsGetted.length; i++) {
