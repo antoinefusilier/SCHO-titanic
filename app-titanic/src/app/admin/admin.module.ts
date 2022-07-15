@@ -6,7 +6,8 @@ import { SearchComponent } from './search/search.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleChartsModule } from 'angular-google-charts';
-
+import { ChartComponent } from './chart/chart.component';
+import { HttpClientModule } from '@angular/common/http';
 // import { AdminDirective } from './admin.directive';
 
 
@@ -17,12 +18,14 @@ import { GoogleChartsModule } from 'angular-google-charts';
     ResultComponent,
     SearchComponent,
     MenuComponent,
+    ChartComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    HttpClientModule
   ],
   exports: [
     AnalyzesComponent,

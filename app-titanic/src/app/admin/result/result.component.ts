@@ -1,9 +1,8 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { docsGetted, survived, not_survived } from 'src/app/services/firebase.service';
-import { GoogleChartsModule, ChartType } from 'angular-google-charts';
 import { ElementRef } from '@angular/core';
-
+import { GoogleChartComponent, ChartType } from 'angular-google-charts';
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
@@ -12,6 +11,17 @@ import { ElementRef } from '@angular/core';
 // @ViewChild('monElementHTML') monElement: ElementRef;
 export class ResultComponent implements OnInit {
 
+  chart = {
+    title: "Result",
+    type: ChartType.PieChart,
+    columnsNames: ["Survived", "Not survived"],
+    options: {
+      colors: ['#e0440e', '#e6693e', '#ec8f6e'],
+      is3D: true
+    }
+  }
+
+
   passengers: Array<any> = [];
   // https://github.com/FERNman/angular-google-charts
   // sur: number = survived.length;
@@ -19,20 +29,11 @@ export class ResultComponent implements OnInit {
   // Can't refresh HTML before variables :/
 
   // To it input/output or firebase function
-  sur: number = 1;
-  not_sur: number = 3;
+  sur: any = ['test','test','test'];
+  not_sur: any = ['test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test'];
 
 
-  chart = {
-    title: "Result",
-    type: ChartType.PieChart,
-    data: [['On suvécus', this.sur], ['Non pas survécus', this.not_sur]],
-    columnsNames: ["Survived", "Not survived"],
-    options: {
-      colors: ['#e0440e', '#e6693e', '#ec8f6e'],
-      is3D: true
-    }
-  }
+
 
   // [title] = "chart.title"[type] = "chart.type"[data] = "chart.data"[columns] = "chart.columnNames"
   // [options] = "chart.options"
@@ -61,9 +62,13 @@ export class ResultComponent implements OnInit {
 
 
   }
-  async loading(){
+  loading(){
     this.sur = survived.length;
+    console.log(this.sur);
+
     this.not_sur = not_survived.length;
+    console.log(this.not_sur);
+
   }
 
 

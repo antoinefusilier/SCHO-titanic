@@ -31,12 +31,6 @@ export class AppComponent {
     this.fS.pushDataToFB();
 
   }
-  callDbUpdate(){
-    console.log(not_pushed_test);
-    console.log(pushed_test);
 
-
-
-  }
 
 }

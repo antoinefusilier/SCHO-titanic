@@ -8,11 +8,8 @@ import { environment as env } from 'src/environments/environment';
 // Http request
 // import { HttpParams, HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
-import { map, Observable } from 'rxjs';
-
 import { DataService } from './data.service';
 import { getAuth } from 'firebase/auth';
-import { ReturnStatement } from '@angular/compiler';
 // INTERFACES #########################33
 import { db_update } from '../interfaces/firebase';
 
@@ -22,19 +19,11 @@ const app = initializeApp(env.firebase);
 // GET database Firestore
 const db = getFirestore(app);
 
-
-// Initialisation of HTTP OPTIONS Service
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Content-Type': 'application/json',
-//     Authorization: 'my-auth-token'
-//   })
-// };
+//
 const trainRef = collection(db, "train_passengers");
+const docsId: Array<any> = [];
 
-// const q = query(trainRef, where("Age", ">", " 10"));
-
-export const docsId: Array<any> = [];
+// RETURNED DATA AND CONFIRMATION
 export const docsGetted: Array<any> = [];
 export const docsConfirm = new Promise<any>((resolve, reject) => {
   if (docsGetted[0] !== null || docsGetted.length < 0) {
@@ -43,8 +32,10 @@ export const docsConfirm = new Promise<any>((resolve, reject) => {
     reject("No document find")
   }
 })
+// GENERALS
 export const survived: Array<any> = [];
 export const not_survived: Array<any> = [];
+// DATABASE DATA
 export const datas_returned: db_update = {
   pushed: [{}],
   not_pushed: [{}],

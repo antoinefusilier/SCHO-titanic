@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 // import { ActivatedRoute, Router } from '@angular/router';
 import { Analyze } from '../../analyze';
-import { FirebaseService, docsGetted, docsId, docsConfirm } from '../../services/firebase.service';
+import { FirebaseService, docsConfirm } from '../../services/firebase.service';
 
 // Issues :
 //  Of exportAs child-dir directive
@@ -38,8 +38,8 @@ export class AnalyzesComponent implements OnInit {
   // classes: any = ()
   constructor(private fS: FirebaseService, private router: Router) {
     // this.fS.getDocsId(" female", " 10", " 40", " 1");
-    console.log(docsId);
-    console.log(docsGetted);
+    // console.log(docsId);
+    // console.log(docsGetted);
   }
 
 
