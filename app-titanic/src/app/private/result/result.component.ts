@@ -42,6 +42,9 @@ export class ResultComponent implements OnInit {
 
     console.log("result: this.passengers: ",this.passengers);
     console.log('constructor result not s:',not_survived);
+
+    setTimeout(this.loading, 3000);
+    // setInterval(this.loading, 3000)
    }
 
   ngOnInit(): void {
@@ -57,17 +60,20 @@ export class ResultComponent implements OnInit {
     console.log('non survivant apres init', survived.length);
     console.log('non survivant apres init', not_survived.length);
 
-
-
+    this.loading();
+    setTimeout(this.loading, 3000);
 
 
   }
   loading(){
-    this.sur = survived.length;
-    console.log(this.sur);
+    setTimeout(()=>{
+      this.sur = survived.length;
+      console.log(this.sur);
 
-    this.not_sur = not_survived.length;
-    console.log(this.not_sur);
+      this.not_sur = not_survived.length;
+      console.log(this.not_sur);
+
+    }, 900)
 
   }
 

@@ -1,28 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AnalyzesComponent } from '../private/analyzes/analyzes.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleChartsModule } from 'angular-google-charts';
-import { HttpClientModule } from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
-// import { AdminDirective } from './admin.directive';
+import { AnalyzesComponent } from './analyzes/analyzes.component';
+import { ResultComponent } from './result/result.component';
+import { HomePrivateComponent } from './home-private/home-private.component';
 
 
 
 @NgModule({
   declarations: [
-
-    DashboardComponent,
+    AnalyzesComponent,
+    ResultComponent,
+    HomePrivateComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    GoogleChartsModule,
-    HttpClientModule
+    GoogleChartsModule
   ],
   exports: [
     FormsModule
   ]
 })
-export class AdminModule { }
+export class PrivateModule { }

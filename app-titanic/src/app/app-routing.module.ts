@@ -1,32 +1,42 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AnalyzesComponent } from './admin/analyzes/analyzes.component';
-import { MenuComponent } from './admin/menu/menu.component';
-import { ResultComponent } from './admin/result/result.component';
-import { SearchComponent } from './admin/search/search.component';
-import { LoginComponent } from './login/login.component';
+// COMPONENTS public
+import { HomeComponent } from './public/home/home.component';
+import { MenuComponent } from './public/menu/menu.component';
+import { LoginComponent } from './public/login/login.component';
+
+// COMPONENTS private
+import { AnalyzesComponent } from './private/analyzes/analyzes.component';
+import { ResultComponent } from './private/result/result.component';
+
+// COMPONENTS admin
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+
+// GUARDS
 import { UserGuard } from './user.guard';
+import { AdminGuard } from './admin.guard';
+import { HomePrivateComponent } from './private/home-private/home-private.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: HomeComponent,
     // pathMatch: 'full'
   },
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: 'public/home',
     pathMatch: 'full'
   },
   {
-    path: 'admin/analyzes',
-    component: AnalyzesComponent,
+    path: 'private/home',
+    component: HomePrivateComponent,
     canActivate: [UserGuard]
   },
   {
-    path: 'admin/search',
-    component: SearchComponent,
-    canActivate: [UserGuard]
+    path: 'admin/dashboard',
+    component: DashboardComponent,
+    canActivate: [AdminGuard]
   },
 ];
 
