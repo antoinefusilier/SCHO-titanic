@@ -5,17 +5,30 @@
   <script src="/angular-chart.js/dist/angular-chart.min.js"></script>
   <link rel="stylesheet" href="/angular-chart.js/dist/angular-chart.css">
 </head>
-<div class="row align-items-start zindex-dropdown">
+<div *ngIf="passengers.length > 1" class="row align-items-start zindex-dropdown">
   <div class="progress">
     <div #test id="test" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
     </div>
     <!-- <button (click)="progress()">actualiser progress</button> -->
   </div>
   <div class="col">
-    <button class="btn btn-sm btn-outline-secondary" type="button" (click)="surviveColor()">Colors</button>
+    <button class="btn btn-primary" type="button" (click)="surviveColor()">Colors</button>
 
-    <button class="btn btn-sm btn-outline-secondary" type="button" (click)="backAnalyze()">Reset</button>
+    <button class="btn btn-secondary" type="button" (click)="backAnalyze()">Reset</button>
   </div>
+  <div>
+    <button class="btn btn-sm btn-outline-secondary" type="button" (click)="loading()">Chargement du diagramme</button>
+    <!-- https://fr.quish.tv/create-pie-chart-angular-12-using-ng2-charts -->
+    <google-chart [title]="chart.title" [type]="chart.type"
+      [data]="[['On suvécus', this.sur], ['Non pas survécus', this.not_sur]]" [columns]="chart.columnsNames"
+      [options]="chart.options">
+    </google-chart>
+    <google-chart [title]="chart2.title" [type]="chart2.type"
+      [data]="[['Survivants première classe', 3], ['Survivants Seconde Classe', 18], ['Survivants Troisième classe', 55]]"
+      [columns]="chart2.columnsNames" [options]="chart2.options">
+    </google-chart>
+  </div>
+
   <div class="container-md col">
     <!-- https://guide-angular.wishtack.io/angular/composants/ngfor -->
     <ol class="list-group list-group-numbered">
@@ -36,27 +49,4 @@
       </li>
     </ol>
   </div>
-
-  <div>
-    <button class="btn btn-sm btn-outline-secondary" type="button"  (click)="loading()">Chargement du diagramme</button>
-     <!-- https://fr.quish.tv/create-pie-chart-angular-12-using-ng2-charts -->
-    <google-chart [title]="chart.title" [type]="chart.type"
-      [data]="[['On suvécus', this.sur], ['Non pas survécus', this.not_sur]]" [columns]="chart.columnsNames"
-      [options]="chart.options">
-    </google-chart>
-    <google-chart [title]="chart2.title" [type]="chart2.type"
-      [data]="[['Survivants première classe', 3], ['Survivants Seconde Classe', 18], ['Survivants Troisième classe', 55]]"
-      [columns]="chart2.columnsNames"
-      [options]="chart2.options">
-    </google-chart>
-  </div>
-
-
-
 </div>
-
-<body>
-  <!--Div that will hold the pie chart-->
-  <div id="chart_div" style="width:400; height:300"></div>
-</body>
-

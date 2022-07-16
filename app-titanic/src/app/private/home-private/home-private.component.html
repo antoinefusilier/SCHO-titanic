@@ -2,14 +2,15 @@
   <nav class="navbar bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
+        <img src="https://static.wixstatic.com/media/72d15b_38ded64ea363455ab8c87c22a60ea8c6~mv2.png/v1/fit/w_1000%2Ch_562%2Cal_c/file.png" alt="" width="20%" height="auto"
           class="d-inline-block align-text-top">
-        Bootstrap
+        Titanic Analyse
       </a>
+      <div>
+        <button class="btn btn-warning" (click)="userView()">Mon compte</button>
+      </div>
     </div>
-    <div>
-      <button (click)="userView()">Mon compte</button>
-    </div>
+
   </nav>
   <div *ngIf="user.open === true">
     <app-user></app-user>

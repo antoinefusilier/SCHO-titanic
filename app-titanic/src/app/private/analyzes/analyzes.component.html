@@ -1,6 +1,6 @@
 <!-- <div class="container-fluid mt-5  container-sm ">-->
-  <div class="m-5 bg-primary" >
-    <form *ngIf="win.open === true" (ngSubmit)="onSubmit(formAnalyze)" #formAnalyze="ngForm" class="rounded-3 bg-secondary opacity-75  ">
+  <div class="m-5 " >
+    <form *ngIf="win.open === true" (ngSubmit)="onSubmit(formAnalyze)" #formAnalyze="ngForm" class="rounded-3  ">
       <div class="m-auto">
         <label for="">Selectionnez le sexe :</label><br>
         <label for="female" class="form-label">Femmes</label>
@@ -39,7 +39,7 @@
         class="btn btn-primary m-3">Submit</button>
     </form>
     <div *ngIf="win.open === false">
-      <button (click)="open()">Nouvelle analyse</button>
+      <button class="btn btn-success" (click)="open()">Nouvelle analyse</button>
     </div>
   </div>
 <!-- </div> -->

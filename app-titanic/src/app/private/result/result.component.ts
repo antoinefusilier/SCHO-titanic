@@ -128,7 +128,7 @@ export class ResultComponent implements OnInit {
 
   backAnalyze(){
 
-    this.router.navigate(['/admin/analyzes']);
+    this.router.navigate(['/private']);
     console.log("Going back to analyze !");
 
   }
