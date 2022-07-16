@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-home-private',
   templateUrl: './home-private.component.html',
@@ -9,8 +8,11 @@ export class HomePrivateComponent implements OnInit {
   user: any = {
     open: false
   }
-  constructor() { }
 
+
+
+  constructor() {
+  }
   ngOnInit(): void {
   }
   userView(){
@@ -20,4 +22,6 @@ export class HomePrivateComponent implements OnInit {
       this.user.open = false
     }
   }
+
+
 }

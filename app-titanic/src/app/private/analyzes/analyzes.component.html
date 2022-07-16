@@ -1,6 +1,6 @@
-<!-- <div class="container-fluid mt-5  container-sm ">
-  <div class="m-5 bg-primary" > -->
-    <form (ngSubmit)="onSubmit(formAnalyze)" #formAnalyze="ngForm" class="rounded-3 bg-secondary opacity-75 position-fixed bg-primary top-50 start-50 translate-middle">
+<!-- <div class="container-fluid mt-5  container-sm ">-->
+  <div class="m-5 bg-primary" >
+    <form *ngIf="win.open === true" (ngSubmit)="onSubmit(formAnalyze)" #formAnalyze="ngForm" class="rounded-3 bg-secondary opacity-75  ">
       <div class="m-auto">
         <label for="">Selectionnez le sexe :</label><br>
         <label for="female" class="form-label">Femmes</label>
@@ -38,8 +38,11 @@
       <button *ngIf="analyzeModel.min_age < analyzeModel.max_age" [disabled]="formAnalyze.invalid" type="submit"
         class="btn btn-primary m-3">Submit</button>
     </form>
-  <!-- </div>
-</div> -->
+    <div *ngIf="win.open === false">
+      <button (click)="open()">Nouvelle analyse</button>
+    </div>
+  </div>
+<!-- </div> -->
 <!-- {{ 'Sex.female:' +analyzeModel.Sex.female }} <br>
 {{ 'Sex.male:' +analyzeModel.Sex.male }} <br>
 {{ 'min_age:' +analyzeModel.min_age}} <br>

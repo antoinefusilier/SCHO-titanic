@@ -24,7 +24,9 @@ import { FirebaseService, docsConfirm } from '../../services/firebase.service';
 })
 export class AnalyzesComponent implements OnInit {
 
-
+  win: any = {
+    open: true
+  }
 
   request: any = {
     sex: 'all',
@@ -63,6 +65,7 @@ export class AnalyzesComponent implements OnInit {
     )
     console.log("request before routing",this.request);
     this.searchResult(form);
+    this.open();
   }
 
   async searchResult(form: NgForm): Promise<any>{
@@ -79,7 +82,13 @@ export class AnalyzesComponent implements OnInit {
       form.reset();
     })
   }
-
+  open(){
+    if(this.win.open === true){
+      this.win.open = false
+    } else {
+      this.win.open = true
+    }
+  }
 
   check(){
 

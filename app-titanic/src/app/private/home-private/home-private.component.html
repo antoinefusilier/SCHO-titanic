@@ -1,14 +1,21 @@
 <header>
-  <div>
-    <h1>menu</h1>
-  </div>
-  <div>
-    <button (click)="userView()">Mon compte</button>
-  </div>
+  <nav class="navbar bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
+          class="d-inline-block align-text-top">
+        Bootstrap
+      </a>
+    </div>
+    <div>
+      <button (click)="userView()">Mon compte</button>
+    </div>
+  </nav>
   <div *ngIf="user.open === true">
     <app-user></app-user>
   </div>
 </header>
+
 <div>
   <app-analyzes></app-analyzes>
 </div>

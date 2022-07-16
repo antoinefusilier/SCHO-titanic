@@ -13,7 +13,7 @@ import { ThisReceiver } from '@angular/compiler';
 export class ResultComponent implements OnInit {
 
   chart = {
-    title: "Result",
+    title: "% des survivants et non survivants",
     type: ChartType.PieChart,
     columnsNames: ["Survived", "Not survived"],
     options: {
@@ -21,7 +21,16 @@ export class ResultComponent implements OnInit {
       is3D: true
     }
   }
-
+  chart2 = {
+    title: "% des survivant par classe",
+    type: ChartType.PieChart,
+    columnsNames: ['Classe', 'Quantité'],
+    options: {
+      colors: ['#e0440e', '#e6693e', '#ec8f6e'],
+      is3D: true,
+      pieStartAngle: 45,
+    }
+  }
 
   passengers: Array<any> = [];
   // https://github.com/FERNman/angular-google-charts
@@ -30,14 +39,15 @@ export class ResultComponent implements OnInit {
   // Can't refresh HTML before variables :/
 
   // To it input/output or firebase function
-  sur: any = ['test','test','test'];
-  not_sur: any = ['test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test'];
+  sur: number = 1
+  not_sur: number = 2;
+
+
+
   p_open: any = {
     id: '',
     val: false
   }
-
-
 
   // [title] = "chart.title"[type] = "chart.type"[data] = "chart.data"[columns] = "chart.columnNames"
   // [options] = "chart.options"
@@ -46,12 +56,11 @@ export class ResultComponent implements OnInit {
 
     console.log("result: this.passengers: ",this.passengers);
     console.log('constructor result not s:',not_survived);
-
+    setInterval(this.progress, 10);
     // setTimeout(this.loading, 3000);
     // setInterval(this.loading, 3000)
 
-   }
-
+  }
   ngOnInit(): void {
     this.passengers = [];
     this.passengers = docsGetted;
@@ -64,11 +73,8 @@ export class ResultComponent implements OnInit {
     console.log('non survivant apres init',this.not_sur);
     console.log('non survivant apres init', survived.length);
     console.log('non survivant apres init', not_survived.length);
-
     // this.loading();
     setTimeout(this.loading, 3000);
-
-
   }
   p_view(p_id: string) {
     console.log('Id selectionnée: ', p_id);
@@ -112,7 +118,7 @@ export class ResultComponent implements OnInit {
   surviveColor(){
     for(let i = 0; i<this.passengers.length; i++){
       if(this.passengers[i].Survived == 0){
-        let li_i = document.getElementById("div "+this.passengers[i].id);
+        let li_i = document.getElementById("div"+this.passengers[i].id);
         if (li_i){
           li_i.style.backgroundColor = 'red';
         }
@@ -124,6 +130,12 @@ export class ResultComponent implements OnInit {
 
     this.router.navigate(['/admin/analyzes']);
     console.log("Going back to analyze !");
+
+  }
+  progress(){
+    let barr = document.getElementById('test')
+    if(barr)
+    barr.style.width = (docsGetted.length)+"%";
 
   }
 
