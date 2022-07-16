@@ -16,7 +16,6 @@ const app = initializeApp(env.firebase);
 
 const auth = getAuth(app);
 
-
 @Injectable({
   providedIn: 'root'
 })

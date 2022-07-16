@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { docsGetted, survived, not_survived } from 'src/app/services/firebase.service';
 import { ElementRef } from '@angular/core';
 import { GoogleChartComponent, ChartType } from 'angular-google-charts';
+import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
@@ -108,6 +109,16 @@ export class ResultComponent implements OnInit {
 
   }
 
+  surviveColor(){
+    for(let i = 0; i<this.passengers.length; i++){
+      if(this.passengers[i].Survived == 0){
+        let li_i = document.getElementById("div "+this.passengers[i].id);
+        if (li_i){
+          li_i.style.backgroundColor = 'red';
+        }
+      }
+    }
+  }
 
   backAnalyze(){
 
