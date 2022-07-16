@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { PrivateModule } from './private/private.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { HomeComponent } from './public/home/home.component';
     AppRoutingModule,
     FormsModule,
     AdminModule,
+    PrivateModule
   ],
   providers: [
 
