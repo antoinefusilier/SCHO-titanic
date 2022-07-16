@@ -16,6 +16,13 @@
         </div>
         <span class="badge bg-primary rounded-pill"> Age: {{passenger.Age}}</span>
         <span class="badge bg-secondary rounded-pill"> Classe : {{passenger.Pclass}}</span>
+        <button class="badge bg-secondary rounded-pill" (click)="p_view(passenger.id)">Voir</button>
+        <div id="{{passenger.id}}" *ngIf="p_open.id == passenger.id && p_open.val === true">
+          <p>Prénom : {{passenger.FirstName}}</p>
+          <p>Cabine : {{passenger.Cabin}}</p>
+          <p>Numéro de ticket : {{passenger.Ticket}}</p>
+          <p>Tarif : {{passenger.Fare}}</p>
+        </div>
       </li>
     </ol>
   </div>
@@ -24,7 +31,7 @@
     [data]="[['On suvécus', this.sur], ['Non pas survécus', this.not_sur]]" [columns]="chart.columnsNames"
     [options]="chart.options">
   </google-chart>
-  <button (click)="loading()"></button>
+  <button class="btn btn-sm btn-outline-secondary" type="button"  (click)="loading()"></button>
   <div class="col">
     <button class="btn btn-sm btn-outline-secondary" type="button" (click)="backAnalyze()">Reset</button>
   </div>

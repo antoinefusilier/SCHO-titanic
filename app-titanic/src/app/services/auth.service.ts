@@ -36,7 +36,7 @@ export class AuthService {
         const user = userCredential.user;
         // ...
         console.log('Firebase User :',user);
-        this.router.navigate(['/admin/analyzes']);
+        this.router.navigate(['/private']);
         localStorage.setItem('uid', user.uid);
         onAuthStateChanged(auth, (user) => {
           if (user) {

@@ -5,6 +5,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import { AnalyzesComponent } from './analyzes/analyzes.component';
 import { ResultComponent } from './result/result.component';
 import { HomePrivateComponent } from './home-private/home-private.component';
+import { UserComponent } from './user/user.component';
 
 
 
@@ -12,7 +13,8 @@ import { HomePrivateComponent } from './home-private/home-private.component';
   declarations: [
     AnalyzesComponent,
     ResultComponent,
-    HomePrivateComponent
+    HomePrivateComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,

@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-private.component.scss']
 })
 export class HomePrivateComponent implements OnInit {
-
+  user: any = {
+    open: false
+  }
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  userView(){
+    if(this.user.open === false){
+      this.user.open = true
+    } else {
+      this.user.open = false
+    }
+  }
 }

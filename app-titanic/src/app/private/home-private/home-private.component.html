@@ -1,1 +1,17 @@
-<p>home-private works!</p>
+<header>
+  <div>
+    <h1>menu</h1>
+  </div>
+  <div>
+    <button (click)="userView()">Mon compte</button>
+  </div>
+  <div *ngIf="user.open === true">
+    <app-user></app-user>
+  </div>
+</header>
+<div>
+  <app-analyzes></app-analyzes>
+</div>
+<div>
+  <app-result></app-result>
+</div>

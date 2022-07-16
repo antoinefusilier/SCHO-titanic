@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 // COMPONENTS public
 import { HomeComponent } from './public/home/home.component';
-import { MenuComponent } from './public/menu/menu.component';
 import { LoginComponent } from './public/login/login.component';
 
 // COMPONENTS private
@@ -25,11 +24,11 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'public/home',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'private/home',
+    path: 'private',
     component: HomePrivateComponent,
     canActivate: [UserGuard]
   },
